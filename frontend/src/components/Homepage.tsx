@@ -59,7 +59,7 @@ const Homepage = () => {
 
     useEffect(() => {
         if (!token || authState.reqUser === null) {
-            navigate("/signin");
+            navigate("/main");
         }
     }, [token, navigate, authState.reqUser]);
 
