@@ -1,70 +1,576 @@
+/* A modern, dark theme that matches the landing page */
+
 .outerContainer {
-  position: relative;
+  min-height: 100vh;
+  /* Dark gradient from the landing page */
+  background: linear-gradient(to bottom, #1f1b2e, #2b2260);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .innerContainer {
   display: flex;
-  background-color: #f0f2f5;
-  height: 90vh;
-  width: 96vw;
-  margin-top: 5vh;
-  margin-left: 2vw;
+  /* Semi-transparent "glassmorphism" effect */
+  background: rgba(0, 0, 0, 0.2);
+  height: 95vh;
+  width: 95vw;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Added to allow nested content to take up full height */
+  overflow: hidden; 
 }
 
 .sideBarContainer {
   width: 30%;
   height: 100%;
-  background-color: #e8e9ec;
-}
-
-.profileContainer {
-  width: 100%;
-  height: 100%;
-}
-
-.sideBarInnerContainer {
-  width: 100%;
+  /* Darker, semi-transparent background for the main sidebar area */
+  background: rgba(0, 0, 0, 0.25);
+  color: #e0d9f7; /* Default light text color */
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .navContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  height: 11vh;
+  padding: 0.5rem;
+  flex-shrink: 0;
 }
 
-.userInfoContainer {
-  display: flex;
-  align-items: center;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+/* --- Navbar Icon Styling --- */
+.navContainer svg {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff; /* Makes the icons white */
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
 }
 
-.optionsContainer {
-  display: flex;
-  align-items: center;
+.navContainer svg:hover {
+  fill: #a78bfa; /* Adds a purple hover effect */
 }
+
+
+/* --- Search Bar and Chat List Styling --- */
 
 .searchContainer {
-  height: 9vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: white;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  /* Lighter background for the search bar */
+  background: #3e3262;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  /* Added a subtle inner shadow for depth */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.searchContainer input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f3e8ff; /* Lighter text for better contrast */
+  font-size: 1rem;
+}
+
+.searchContainer input::placeholder {
+  color: #c9bcfc; /* Lighter placeholder */
 }
 
 .chatsContainer {
-  height: 70vh;
-  background-color: white;
+  flex-grow: 1;
+  /* Lighter background for the chat list */
+  background: #3e3262;
   overflow-y: auto;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  /* Added a subtle inner shadow for depth */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
+
+.chatsContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatsContainer::-webkit-scrollbar-thumb {
+  background: #6a58a7; /* Adjusted scrollbar thumb color */
+  border-radius: 4px;
+}
+
+.chatsContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* --- Messages and Welcome Screen Styling --- */
 
 .messagesContainer {
   width: 70%;
+  background: transparent; /* Blends with the inner container */
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  color: #e0d9f7;
+  /* Center the welcome message */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #b2a8e8;
+}
+
+.welcomeContainer svg {
+  width: 80px;
+  height: 80px;
+  opacity: 0.8;
+}
+
+.welcomeContainer p {
+  max-width: 300px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* --- Profile Page Specific Styles --- */
+
+.profilePageContainer {
+  width: 70%; /* Takes up the same space as messagesContainer */
+  background: transparent; /* Blends with the innerContainer */
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: #e0d9f7;
+}
+
+.profileHeader {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  /* Changed from blue to a subtle gradient that matches the theme */
+  background: linear-gradient(to right, #2b2260, #1f1b2e);
+  border-top-right-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profileHeader span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff; /* White text for contrast */
+}
+
+.profileHeader .backArrow {
+  width: 28px;
+  height: 28px;
+  fill: #ffffff; /* White arrow */
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
+}
+
+.profileHeader .backArrow:hover {
+  fill: #a78bfa;
+}
+
+
+.profileAvatarContainer {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #5a4b8f; /* Lighter purple/gray circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.profileAvatarContainer svg {
+  width: 80px;
+  height: 80px;
+  fill: #ffffff; /* White profile icon */
+}
+
+.nameInputContainer {
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  background: #3e3262; /* Matches search bar background */
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.nameInputContainer input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f3e8ff; /* White text for input */
+  font-size: 1rem;
+  padding-right: 0.5rem; /* Space for icons */
+}
+
+.nameInputContainer input::placeholder {
+  color: #c9bcfc; /* Lighter placeholder */
+}
+
+.nameInputContainer .actionIcon {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff; /* White 'X' and checkmark icons */
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
+}
+
+.nameInputContainer .actionIcon:hover {
+  fill: #a78bfa;
+}
+
+
+.helperText {
+  color: #b2a8e8; /* Lighter color for helper text */
+  font-size: 0.85rem;
+}
+
+
+/* Structural containers */
+.profileContainer,
+.sideBarInnerContainer,
+.userInfoContainer,
+.optionsContainer {
+  /* No specific styles needed for these structural elements now */
+}/* A modern, dark theme that matches the landing page */
+
+.outerContainer {
+  min-height: 100vh;
+  /* Dark gradient from the landing page */
+  background: linear-gradient(to bottom, #1f1b2e, #2b2260);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerContainer {
+  display: flex;
+  /* Semi-transparent "glassmorphism" effect */
+  background: rgba(0, 0, 0, 0.2);
+  height: 95vh;
+  width: 95vw;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.sideBarContainer {
+  width: 30%;
+  height: 100%;
+  /* Darker, semi-transparent background for the main sidebar area */
+  background: rgba(0, 0, 0, 0.25);
+  color: #e0d9f7; /* Default light text color */
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* --- Navbar Icon Styling --- */
+.navContainer svg {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff; /* Makes the icons white */
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
+}
+
+.navContainer svg:hover {
+  fill: #a78bfa; /* Adds a purple hover effect */
+}
+
+
+/* --- Search Bar and Chat List Styling --- */
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  /* Lighter background for the search bar */
+  background: #3e3262;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  /* Added a subtle inner shadow for depth */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.searchContainer input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f3e8ff; /* Lighter text for better contrast */
+  font-size: 1rem;
+}
+
+.searchContainer input::placeholder {
+  color: #c9bcfc; /* Lighter placeholder */
+}
+
+.chatsContainer {
+  flex-grow: 1;
+  /* Lighter background for the chat list */
+  background: #3e3262;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  /* Added a subtle inner shadow for depth */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.chatsContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatsContainer::-webkit-scrollbar-thumb {
+  background: #6a58a7; /* Adjusted scrollbar thumb color */
+  border-radius: 4px;
+}
+
+.chatsContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* --- Messages Container - General Styling --- */
+
+.messagesContainer {
+  width: 70%;
+  // background: transparent; /* Blends with the inner container */
+  background:rgba(31, 27, 46, 0.7);
+  border-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  color: #e0d9f7;
+  display: flex;
+  flex-direction: column; /* Changed to column to stack header and content */
+  overflow: hidden; /* Ensures rounded corners are respected */
+}
+
+/* --- Common Header Style for Profile and Create New Chat --- */
+.chatHeader {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  /* Gradient that matches the dark theme */
+  background: linear-gradient(to right, #2b2260, #1f1b2e);
+  border-top-right-radius: 1.5rem; /* Only top right for the header */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.chatHeader span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff; /* White text for contrast */
+}
+
+.chatHeader .backArrow {
+  width: 28px;
+  height: 28px;
+  fill: #ffffff; /* White arrow */
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
+}
+
+.chatHeader .backArrow:hover {
+  fill: #a78bfa;
+}
+
+/* --- Content Area for Profile/New Chat Screens --- */
+.chatContentArea {
+  flex-grow: 1; /* Allows this area to take up remaining space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem; /* Consistent padding */
+  text-align: center;
+  /* Background blends with inner container, can be slightly different if needed */
+  background: transparent; 
+}
+
+
+/* --- Profile Page Specific Elements --- */
+
+.profileAvatarContainer {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #5a4b8f; /* Lighter purple/gray circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  margin-top: 2rem; /* Added some top margin */
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.profileAvatarContainer svg {
+  width: 80px;
+  height: 80px;
+  fill: #ffffff; /* White profile icon */
+}
+
+.nameInputContainer {
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  background: #3e3262; /* Matches search bar background */
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.nameInputContainer input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f3e8ff; /* White text for input */
+  font-size: 1rem;
+  padding-right: 0.5rem; /* Space for icons */
+}
+
+.nameInputContainer input::placeholder {
+  color: #c9bcfc; /* Lighter placeholder */
+}
+
+.nameInputContainer .actionIcon {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff; /* White 'X' and checkmark icons */
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
+}
+
+.nameInputContainer .actionIcon:hover {
+  fill: #a78bfa;
+}
+
+.helperText {
+  color: #b2a8e8; /* Lighter color for helper text */
+  font-size: 0.85rem;
+}
+
+/* --- Create New Chat Specific Elements --- */
+
+.startChatText {
+  color: #e0d9f7;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem; /* Added some top margin */
+}
+
+/* Reusing .searchContainer for "Search user to chat" for consistency */
+.searchUserContainer {
+  width: 80%;
+  max-width: 400px;
+  /* Inherits styles from .searchContainer, adjust if needed */
+  display: flex;
+  align-items: center;
+  background: #3e3262;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.searchUserContainer input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f3e8ff;
+  font-size: 1rem;
+}
+
+.searchUserContainer input::placeholder {
+  color: #c9bcfc;
+}
+
+.searchUserContainer svg {
+  width: 20px;
+  height: 20px;
+  fill: #c9bcfc; /* Lighter search icon */
+  margin-right: 0.5rem;
+}
+
+
+/* --- Welcome Screen Styling (inside messagesContainer) --- */
+.welcomeContainer {
+  flex-grow: 1; /* Takes up remaining space when active */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  gap: 1rem;
+  color: #b2a8e8;
+  padding: 2rem; /* Add some padding */
+}
+
+.welcomeContainer svg {
+  width: 80px;
+  height: 80px;
+  opacity: 0.8;
+}
+
+.welcomeContainer p {
+  max-width: 300px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+
+/* Structural containers */
+.profileContainer,
+.sideBarInnerContainer,
+.userInfoContainer,
+.optionsContainer {
+  /* No specific styles needed for these structural elements now */
 }
